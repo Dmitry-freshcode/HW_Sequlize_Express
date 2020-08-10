@@ -1,4 +1,4 @@
-const { Site } = require('./../db/models');
+const { Site , Product, Category , SiteCategory} = require('./../db/models');
 // const AppErrors = require('./../utils/applicationErrors');
 async function addSite(req,res,next) {
     try{
@@ -20,9 +20,9 @@ async function updateSiteByPk(req,res,next) {
                 id: req.params.siteId,
             },
         });
-        const foundSite = await Site.findByPk(req.params.siteId,{});
 
-        if(foundSite){
+        if(RowsCount){
+            const foundSite = await Site.findByPk(req.params.siteId,{});
             return res.send(foundSite);
         }
         next();
@@ -31,7 +31,9 @@ async function updateSiteByPk(req,res,next) {
 
 async function getSiteByPk(req,res,next) {
     try{
-        const foundSite = await Site.findByPk(req.params.siteId,{returning:false});
+        const foundSite = await Site.findByPk(req.params.siteId,{
+            returning:false
+        });
         if(foundSite) {
             return res.send(foundSite);
         }
@@ -43,10 +45,10 @@ async function deleteSiteByPk(req,res,next) {
     try{
         const deletedRowsCount = await Site.destroy({
             returning:false,
-            where: { id: req.params.siterId }
+            where: { id: req.params.siteId }
         } );
         if(deletedRowsCount) {
-            return res.send(`${deletedRowsCount}`)
+            return res.send(`site with id=${req.params.siteId} was deleted`)
         }
         next();
     }catch(e){ next(e);}

@@ -44,10 +44,11 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
   Product.associate = function (models) {
-    Product.hasMany(models.Site, {
+    Product.belongsTo(models.Site, {
       foreignKey: {
         field: 'siteId',
       },
+      as: 'owner'
     });
   };
   return Product;

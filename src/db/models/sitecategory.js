@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   },{freezeTableName: true});
 
   SiteCategory.associate = function (models) {
-    SiteCategory.hasMany(models.Category, {
+    SiteCategory.belongsTo(models.Category, {
       foreignKey: {
         field: 'categoryId'
       }
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   SiteCategory.associate = function (models) {
-    SiteCategory.hasMany(models.Site, {
+    SiteCategory.belongsTo(models.Site, {
       foreignKey: {
         field: 'siteId'
       }
