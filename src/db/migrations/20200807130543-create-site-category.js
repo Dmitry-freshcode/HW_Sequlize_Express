@@ -6,39 +6,39 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       siteId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references:{
-          model:'Site',
-          key: 'id'
-          },
-        onUpdate:'CASCADE',
-        onDelete:'CASCADE',
+        references: {
+          model: 'Site',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references:{
-          model:'Category',
-          key: 'id'
+        references: {
+          model: 'Category',
+          key: 'id',
         },
-        onUpdate:'CASCADE',
-        onDelete:'CASCADE',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('SiteCategory');
-  }
+  },
 };

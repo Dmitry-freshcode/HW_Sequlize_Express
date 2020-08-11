@@ -36,6 +36,8 @@ module.exports = {
           model:'Category',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       siteId: {
         type: Sequelize.INTEGER,
@@ -44,6 +46,8 @@ module.exports = {
           model:'Site',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       end_date: {
         type: Sequelize.DATE,
